@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zadanie 3</title>
+
+    <style>
+        .form__input {
+            width: 300px;
+            height: 40px;
+            font-size: 24px;
+        }
+
+        .form__search-button {
+            width: 80px;
+            height: 40px;
+            font-size: 20px;
+            margin: 0 0 0 20px;
+        }
+
+        table,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table {
+            margin: 50px 0 0 0;
+            width: 400px;
+            font-size: 24px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <form class="form">
+        <input class="form__input" type="text" placeholder="type text">
+        <button class="form__search-button">Search</button>
+    </form>
+
+    <table>
+        <tbody>
+            <tr>
+                <td>Walmart</td>
+            </tr>
+            <tr>
+                <td>State Grid</td>
+            </tr>
+            <tr>
+                <td>Sinopec</td>
+            </tr>
+            <tr>
+                <td>China National Petroleum</td>
+            </tr>
+            <tr>
+                <td>Royal Dutch Shell</td>
+            </tr>
+            <tr>
+                <td>Toyota Motor</td>
+            </tr>
+            <tr>
+                <td>Volkswagen</td>
+            </tr>
+            <tr>
+                <td>BP</td>
+            </tr>
+            <tr>
+                <td>Exxon Mobil</td>
+            </tr>
+            <tr>
+                <td>Berkshire Hathaway</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const formInput = document.querySelector('.form__input');
+        const searchButton = document.querySelector('.form__search-button');
+        const table = document.querySelector('tbody');
+        const tdElements = document.querySelectorAll('td');
+
+        const filterTable = (e) => {
+            e.preventDefault();
+
+            const searchText = formInput.value.toUpperCase();
+            formInput.value = '';
+
+            let items = [...tdElements];
+            items = items.filter(item => item.textContent.toUpperCase().includes(searchText));
+            table.textContent = "";
+
+            items.forEach(item => {
+                const newTr = document.createElement('tr');
+                newTr.appendChild(item);
+                table.appendChild(newTr);
+            })
+        }
+
+        searchButton.addEventListener('click', filterTable);
+    </script>
+</body>
+
+</html>

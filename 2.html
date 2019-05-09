@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zadanie 2</title>
+
+    <style>
+        .button {
+            width: 100px;
+            height: 60px;
+            font-size: 20px;
+        }
+
+        .modal-container {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal {
+            width: 400px;
+            height: 200px;
+            background-color: #FFF;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <button class="button">show popup</button>
+
+    <!-- modal-section -->
+
+    <div class="modal-container">
+        <div class="modal">
+            <nav class="modal__nav">
+                <a class="modal__link" href="3.html" target="_blank">otwórz 3.html</a>
+            </nav>
+            <button class="button">close popup</button>
+        </div>
+    </div>
+
+    <script>
+        let flag = false;
+        const buttons = document.querySelectorAll('.button');
+        const modalContainer = document.querySelector('.modal-container');
+
+        const showHideModal = () => {
+
+            if (!flag) {
+                modalContainer.style.display = 'flex';
+                flag = !flag;
+            } else {
+                modalContainer.style.display = 'none';
+                flag = !flag;
+            }
+        }
+
+        buttons.forEach(button => button.addEventListener('click', showHideModal));
+    </script>
+</body>
+
+</html>
